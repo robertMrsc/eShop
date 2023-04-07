@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Satisfy&display=swap');
+$base-font: 'Roboto';
+$logo-font: 'Satisfy';
+$base-bg-color: #f8f8ed;
+.shop-container{
+    padding-block: 1rem;
+    font-family: $base-font;
+    .product-category{
+        text-align: center;
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+        .shop-content{
+            padding-inline:1rem;
+            padding-top: 4rem;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            .shop-product{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding-bottom:2.75rem;
+
+                .shop-product-image{
+                    width: 100%;
+                    background-color: gray;
+                    aspect-ratio: 1/1.25;
+                    background-size: cover;
+
+                }
+                .shop-product-text{
+                    text-align: center;
+                    font-size: 0.9rem;
+                    line-height: 1.2rem;
+                }
+            }
+        }
+    
+}
+
+@media(max-width:965px){
+    .shop-container{
+        .shop-content{
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
+}
+@media(max-width:665px){
+    .shop-container {
+            .shop-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+}
