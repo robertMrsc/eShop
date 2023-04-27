@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Satisfy&display=swap');
+$base-font: 'Roboto';
+$logo-font: 'Satisfy';
+$base-bg-color: #f8f8ed;
+
+.contact{
+    font-family: $base-font;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .contact-container{
+        width: 50%;
+        margin-block: 2.5rem;
+        justify-content: center;
+        border:1px solid black;
+        background-color: $base-bg-color;
+        border-radius: 5px;
+        .contact-header{
+            padding-block: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        .contact-form{
+            padding:1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:1rem;
+            .contact-input, .message-input{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                .contact-form-input{
+                    padding-block: 0.5rem;
+                    padding-inline:0.5rem;
+                    border-radius: 5px;
+                }
+                
+                
+            }
+            .send-button{
+                padding-block: 0.5rem;
+                padding-inline:1.25rem;
+                border-radius: 5px;
+                outline: none;
+                cursor: pointer;
+                background-color: #8d450aa2;
+                border:none;
+                font-weight: 500;
+                color:white;
+                
+            }
+        }
+    }
+}

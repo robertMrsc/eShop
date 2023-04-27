@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Satisfy&display=swap');
+$base-font: 'Roboto';
+$logo-font: 'Satisfy';
+$base-bg-color: #f8f8ed;
+
+.login-container{
+    font-family: $base-font;
+    background-color:#f8f8dc;
+    width: 35%;
+    margin:auto;
+    border-radius: 10px;
+    .login-header{
+        font-weight: 500;
+        font-size: 1.25rem;
+        text-align: center;
+        padding-top: 3rem;
+        padding-bottom: 1.5rem;
+    
+    }
+    .login-form{
+        display: flex;
+        padding-inline: 2rem;
+        flex-direction: column;
+        align-items: center;
+        .login-input{
+            width: 100%;
+            border-radius: 10px;
+            padding-inline: 0.5rem;
+            outline: none;
+            border:none;
+            margin-block: 1rem;
+            padding-block: 0.5rem;
+        }
+        .login-button{
+           margin-block-end: 1rem;
+           border-radius: 10px;
+           padding-block: 0.5rem;
+           width: 30%;
+           cursor: pointer;
+        }
+    }
+}
+.email-errors, .password-errors{
+    padding-bottom: 1rem;
+    .input-error{
+        color:rgba(255, 0, 0, 0.897)
+    }
+}
