@@ -11,13 +11,14 @@ import Signup from './Signup';
 import PrivateRoutes from './PrivateRoutes';
 import Cart from './Cart';
 import Contact from './Contact';
+import { useAuth } from './Context/AuthContext';
+import { AuthProvider } from './Context/AuthContext';
 
 function App(){
-  
   return (
     <div className="App">
-    
-        
+
+        <AuthProvider>
         <Header/>
         <Routes>
           <Route path='/' element={<Homepage/>} />
@@ -31,6 +32,7 @@ function App(){
           </Route>
         </Routes>
         <Footer/>
+        </AuthProvider>
       
     </div>
   );

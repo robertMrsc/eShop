@@ -1,25 +1,36 @@
 import React from 'react';
 import {useEffect, useRef} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './Context/AuthContext';
 type Props={
     display:boolean;
     setDisplay:React.Dispatch<React.SetStateAction<boolean>>
 }
 const UserPanel:React.FC<Props> = ({display, setDisplay}) => {
+    const {token, setToken}=useAuth();
     const navigate=useNavigate();
     const ref=useRef<HTMLDivElement>(null);
-    const panelStyles=()=>{
+    type stylez={
+        opacity:number,
+        transform:string,
+        pointerEvents:string
+    }
+    const openPanel:stylez={
+        'opacity':1,
+        'transform':"TranslateY(0)",
+        'pointerEvents':'all'
+    }
+    const panelStyles=():any=>{
         if (display){
-            return {
-                "opacity":1,
-                "transform":"TranslateY(0)",
-                "pointer-events":"all"
-            }
+            return (
+                openPanel
+            )
         }
     }
     const handleSignIn=()=>{
         navigate('/login');
         setDisplay(false);
+        setToken(token);
     }
     useEffect(()=>{
         
@@ -41,12 +52,14 @@ const UserPanel:React.FC<Props> = ({display, setDisplay}) => {
             document.body.style.pointerEvents='all'
         }
     }, [display])
+    
   return (
     <div ref={ref} style={panelStyles()} className='user-panel'>
         <div className='user-panel-content'>
             <p className='user-panel-header'>Your account</p>
             <div className='user-panel-buttons'>
-                <button onClick={handleSignIn} className='sign-in-button'>Sign in</button>
+                { token ? <button className='sign-out-button'>Sign out</button> :
+                <button onClick={handleSignIn} className='sign-in-button'>Sign in</button> }
             </div>
         </div>
     </div>
