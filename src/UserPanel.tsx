@@ -7,6 +7,25 @@ type Props={
     setDisplay:React.Dispatch<React.SetStateAction<boolean>>
 }
 const UserPanel:React.FC<Props> = ({display, setDisplay}) => {
+
+    const handleSignOut= async ()=>{
+        try{
+        const response= await fetch('http://localhost:5000/user/signout',{
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            credentials:'include'
+        });
+        const data=await response.json();
+        console.log(data);
+    }
+        catch(err){
+            console.log(err);
+        };
+        setDisplay(false);
+    };
+    
     const {token, setToken}=useAuth();
     const navigate=useNavigate();
     const ref=useRef<HTMLDivElement>(null);
@@ -58,7 +77,7 @@ const UserPanel:React.FC<Props> = ({display, setDisplay}) => {
         <div className='user-panel-content'>
             <p className='user-panel-header'>Your account</p>
             <div className='user-panel-buttons'>
-                { token ? <button className='sign-out-button'>Sign out</button> :
+                { token ? <button onClick={handleSignOut} className='sign-out-button'>Sign out</button> :
                 <button onClick={handleSignIn} className='sign-in-button'>Sign in</button> }
             </div>
         </div>
