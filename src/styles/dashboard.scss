@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Satisfy&display=swap');
+$base-font: 'Roboto';
+$logo-font: 'Satisfy';
+$base-bg-color: #f8f8ed;
+
+.dashboard{
+
+    padding-block: 1rem;
+    margin-block: auto;
+    background-color: black;
+    width: 20%;
+    color: white;
+    font-family: $base-font;
+    height: auto;
+    .dashboard-text {
+            padding-top: 2.25rem;
+        }
+
+        .logout{
+        padding-top: 2.5rem;
+     }
+    .ds-option{
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .dashboard-container{
+        padding-block: 1rem;
+        border-bottom: 1px solid white;
+    }
+    .ds-option:hover{
+        color: rgba(255, 255, 255, 0.616);
+    }
+    .dashboard-content{
+        padding:2rem;
+        .dashboard-my-account{
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        .dashboard-orders{
+            padding-block: 1rem;
+            border-bottom: 1px solid white;
+        }
+        .dashboard-account{
+            padding-block:1rem;
+            border-bottom: 1px solid white;
+            .dashboard-account-header{
+                font-size: 1.5rem;
+                font-weight: 500;
+                padding-block: 1rem;
+            }
+        }
+        .dashboard-contact{
+            padding-block: 1rem;
+            border-bottom: 1px solid white;
+            .dashboard-contact-header{
+                font-size:1.5rem;
+                font-weight: 500;
+                padding-block: 1rem;
+            }
+        }
+    }
+}
+.save-form-button {
+    margin-top: auto;
+    width: 15%;
+    margin-left: auto;
+    border: none;
+    padding-block: 0.75rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4d4d4d;
+    color: white;
+    box-shadow: 0px 2px 2px black;
+    transition: all 0.2s ease;
+}
+
+.save-form-button:hover {
+    background-color: #5c5c5c;
+}
+.account{
+    width: 100%;
+    font-family: $base-font;
+    display: flex;
+    gap:2rem;
+    
+    .details{
+        width: 100%;
+        margin-inline: auto;
+        .details-content{
+            height: 100%;
+            width: 100%;
+            padding: 2rem;
+            .details-header{
+                width: 100%;
+                border-bottom: 1px solid black;
+                padding-bottom: 0.5rem;
+                .details-header-text{
+                    font-size: 1.75rem;
+                    font-weight: 500;
+                    text-align: center;
+                }
+            }
+            .details-form{
+                min-height: 90%;
+                display: flex;
+                flex-direction: column;
+                gap:2.5rem;
+                .details-form-header{
+                    padding-block: 1rem;
+                    font-size: 1.25rem;
+                    font-weight: 500;
+                }
+                .input-container{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .input-label{
+                        min-width: 15%;
+                        padding-right: 0.5rem;
+                    }
+                    
+                    .input-field{
+                        font-size: 1.25rem;
+                        padding-block:0.75rem ;
+                        padding-left: 0.5rem;
+                        width: auto;
+                        flex:1;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+.address{
+    width: 100%;
+    .address-content{
+        width: 100%;
+        padding: 2rem;
+        height: 100%;
+        .address-header{
+            width: 100%;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid black;
+            .address-header-text{
+                text-align: center;
+                font-size: 1.75rem;
+                font-weight: 500;
+                
+            }
+        }
+        .address-form{
+            display: flex;
+            flex-direction: column;
+            gap:2.5rem;
+            min-height: 90%;
+            .address-form-header{
+                padding-block: 1rem;
+                font-size: 1.25rem;
+                font-weight: 500;
+            }
+            .address-input{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .address-label{
+                    min-width: 15%;
+                }
+                .address-field{
+                    font-size: 1.25rem;
+                        padding-block: 0.75rem;
+                        padding-left: 0.5rem;
+                        width: auto;
+                        flex: 1;
+                }
+            }
+        }
+    }
+}

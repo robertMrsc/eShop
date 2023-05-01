@@ -13,6 +13,10 @@ import Cart from './Cart';
 import Contact from './Contact';
 import { useAuth } from './Context/AuthContext';
 import { AuthProvider } from './Context/AuthContext';
+import Dashboard from './Dashboard';
+import AccDetails from './AccDetails';
+import YourAccount from './YourAccount';
+import Address from './Address';
 
 function App(){
   return (
@@ -29,6 +33,10 @@ function App(){
           <Route path='/contact' element={<Contact/>} />
           <Route element={<PrivateRoutes/>}>
               <Route element={<Cart/>} path='/cart' />
+          </Route>
+          <Route path='/dashboard' element={<YourAccount/>}>
+              <Route path='/dashboard/details' element={<AccDetails/>} />
+              <Route path='/dashboard/address' element={<Address/>} />
           </Route>
         </Routes>
         <Footer/>
