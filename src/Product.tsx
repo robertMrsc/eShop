@@ -1,28 +1,31 @@
 import React from 'react';
-import './styles/product.scss'
+import './styles/product.scss';
+import { productType } from './Context/productType';
+import { useParams } from 'react-router-dom';
+
+type Props={
+  products:productType[];
+}
 
 
-const Product = () => {
+const Product:React.FC<Props> = ({products}) => {
+  const {id}=useParams();
+  const product=products.filter((product)=>{
+    return product._id===id
+  });
+
   return (
     <main className='product-container'>
       <div className='product-images'>
-        <div className='primary-image'>
+        <div style={{backgroundImage:`url(${product[0]?.imageUrl})`}} className='primary-image'>
 
-        </div>
-        <div className='secondary-images'>
-            <div className='secondary-image'></div>
-            <div className='secondary-image'></div>
-            <div className='secondary-image'></div>
-            <div className='secondary-image'></div>
         </div>
       </div>
 
       <div className='product-text'>
-          <p className='product-title'>Magical Soap</p>
-          <p className='product-price'>$25.00</p>
-          <p className='product-description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, sequi.</p>
-          <p className='product-description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus voluptas expedita tempore iste deserunt tempora eaque quia deleniti laboriosam libero. Illum optio cumque placeat asperiores numquam commodi possimus recusandae tempora.</p>
-          <p className='product-description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates illo hic et consectetur a quibusdam ullam provident ex, iste dolor, cupiditate corporis voluptatibus, vel perferendis fugiat officiis nostrum fuga sint?</p>
+          <p className='product-title'>{product[0]?.title}</p>
+          <p className='product-price'>{product[0]?.price}</p>
+          <p className='product-description'>{product[0]?.description}</p>
           <div className='product-button-container'> 
             <button className='product-button'>Add to cart</button>          
           </div>

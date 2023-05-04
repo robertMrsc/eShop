@@ -7,7 +7,7 @@ $base-bg-color: #f8f8ed;
     font-family: $base-font;
     .product-category{
         text-align: center;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         font-weight: 500;
     }
         .shop-content{
@@ -28,12 +28,24 @@ $base-bg-color: #f8f8ed;
                     background-color: gray;
                     aspect-ratio: 1/1.25;
                     background-size: cover;
-
+                    background-position: center;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
                 }
-                .shop-product-text{
+                .shop-product-image:hover{
+                    filter: brightness(105%);
+                }
+
+                .shop-product-title{
                     text-align: center;
-                    font-size: 0.9rem;
-                    line-height: 1.2rem;
+                    font-size: 1.25rem;
+                    font-weight: 500;
+                    padding-block: 1rem;
+                    color:rgb(110, 110, 110)
+                }
+                .shop-product-price{
+                    font-weight: 500;
+                    font-size: 1.25rem;
                 }
             }
         }

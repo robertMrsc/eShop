@@ -9,6 +9,7 @@ const Signup = () => {
     const [password, setPassword]=useState<string>('');
     const [emailError, setEmailError]=useState<string>('');
     const [passwordError, setPasswordError]=useState<string>('');
+    const [fullName, setFullName]=useState<string>('');
 
     const handleUsername=(e:React.FormEvent<HTMLInputElement>)=>{
        setEmail(e.currentTarget.value);
@@ -16,6 +17,9 @@ const Signup = () => {
 
     const handlePassword=(e:React.FormEvent<HTMLInputElement>)=>{
        setPassword(e.currentTarget.value);
+    }
+    const handleName=(e:React.FormEvent<HTMLInputElement>)=>{
+      setFullName(e.currentTarget.value)
     }
     const handleSignup=async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
@@ -30,7 +34,8 @@ const Signup = () => {
             credentials:'include',
             body:JSON.stringify({
                 email:email,
-                password:password
+                password:password,
+                fullname:fullName
             })
         })
         const data=await response.json();
@@ -50,6 +55,7 @@ const Signup = () => {
         <p className='login-header'>Sign Up</p>
         <form className='login-form' onSubmit={handleSignup} >
             <input className='login-input' value={email} onChange={handleUsername} placeholder='Enter email...' type='email' ></input>
+            <input onChange={handleName} className='login-input' type='text' placeholder='Enter Full Name' ></input>
             <div className='email-errors'>
               {emailError && <p className='input-error'>{emailError}</p>}
             </div>

@@ -1,9 +1,10 @@
 import React from 'react';
+import {useEffect, useState} from 'react'
 import './styles/index.scss';
 import Header from './Header';
 import Homepage from './Homepage';
 import Footer from './Footer';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useParams} from 'react-router-dom';
 import Shop from './Shop';
 import Product from './Product';
 import Login from './Login';
@@ -17,17 +18,23 @@ import Dashboard from './Dashboard';
 import AccDetails from './AccDetails';
 import YourAccount from './YourAccount';
 import Address from './Address';
+import { ProductProvider, useProduct } from './Context/productContext';
+import { productType } from './Context/productType';
+
 
 function App(){
+  const {products}=useProduct();
+  console.log(products);
+  
   return (
     <div className="App">
-
+        <ProductProvider>
         <AuthProvider>
         <Header/>
         <Routes>
           <Route path='/' element={<Homepage/>} />
           <Route path='/shop' element={<Shop/>} /> 
-          <Route path='/product' element={<Product/>} />
+          <Route path='/product/:id' element={<Product products={products} />} />
           <Route path='/login' element={<Login/>} />
           <Route path='/signup' element={<Signup/>} />
           <Route path='/contact' element={<Contact/>} />
@@ -41,6 +48,8 @@ function App(){
         </Routes>
         <Footer/>
         </AuthProvider>
+        </ProductProvider>
+        
       
     </div>
   );
