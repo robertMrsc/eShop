@@ -2,15 +2,20 @@ import React from 'react';
 import {AiOutlineUser} from 'react-icons/ai';
 import {BiSearch} from 'react-icons/bi';
 import {AiOutlineShoppingCart} from 'react-icons/ai';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import UserPanel from './UserPanel';
 import {useState} from 'react';
 
+
 const Header:React.FC = () => {
+  const navigate=useNavigate();
   const [display, setDisplay]=useState(false);
 
   const handleClick=()=>{
   setDisplay(true);
+  }
+  const navToCart=()=>{
+    navigate('/cart')
   }
 
   return (
@@ -29,7 +34,7 @@ const Header:React.FC = () => {
             <div className="header-icons">
                 <span onClick={handleClick} className='header-icon'><AiOutlineUser/></span>
                 <span className='header-icon'><BiSearch/></span>
-                <span className='header-icon'><AiOutlineShoppingCart/></span>
+                <span onClick={navToCart}  className='header-icon'><AiOutlineShoppingCart/></span>
                 <UserPanel setDisplay={setDisplay} display={display}/>
             </div>
             </div>

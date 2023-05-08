@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Satisfy&display=swap');
+$base-font: 'Roboto';
+$logo-font: 'Satisfy';
+$base-bg-color: #f8f8ed;
+
+
+
+.cart{
+    padding:0.5rem;
+    font-family: $base-font;
+    .cart-header{
+        text-align: center;
+        font-size: 1.75rem;
+        font-weight: 500;
+    }
+    .cart-content{
+        padding-top: 2rem;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        .cart-content-header{
+            width: 100%;
+            display: flex;
+            gap:1.5rem;
+            border-bottom: 1px solid gray;
+            padding-bottom: 0.25rem;
+            .cart-header-product{
+                width: 40%;
+            }
+            .cart-header-quantity{
+                width: 20%;
+            }
+            .cart-header-price{
+                width: 20%;
+            }
+            .cart-header-product-total{
+                width: 20%;
+            }
+        }
+
+        .cart-content-item{
+            padding-block: 1rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            gap:1rem;
+            border-bottom: 1px solid gray;
+
+            .cart-content-product{
+                display: flex;
+                gap:0.25rem;
+                width: 40%;
+                align-items: center;
+                .cart-content-remove{
+                    font-size: 1.25rem;
+                    cursor: pointer;
+                }
+                .cart-product-image{
+                    aspect-ratio: 1/1;
+                    min-width: 30%;
+                    background-position: center;
+                    background-size: cover;
+                }
+            }
+            .cart-content-quantity{
+                width: 20%;
+                display: flex;
+                gap:0.25rem;
+                .cart-quantity-add, .cart-quantity-remove{
+                    font-size: 1.25rem;
+                    cursor: pointer;
+                }
+
+            }
+            .cart-content-price{
+                width: 20%;
+            }
+            .cart-content-product-total{
+                width: 20%;
+            }
+
+        }
+        
+    }
+    
+}

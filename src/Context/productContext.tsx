@@ -15,6 +15,7 @@ const defaultValue:contextModel={
         price:"",
         description:"",
         imageUrl:"",
+        quantity:1,
         _id:""
     }],
     setProducts:()=>{}
@@ -39,7 +40,7 @@ export const ProductProvider=({children}:productContextProvider)=>{
     useEffect(()=>{
         const getProducts= async ()=>{
             try{
-            const response=await fetch('http://localhost:5000/products',{
+            const response=await fetch('http://localhost:5000/product/getProducts',{
                 method:"GET",
                 headers:{
                     'Content-Type':'application/json'

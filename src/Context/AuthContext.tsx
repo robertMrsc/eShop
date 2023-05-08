@@ -1,6 +1,7 @@
 import React, {SetStateAction } from 'react';
 import {createContext, useContext} from 'react';
 import {useState, useEffect} from 'react';
+import { productType } from './productType';
 
 type contextModel={
   token:string,
@@ -8,7 +9,9 @@ type contextModel={
   loading:boolean,
   setLoading:React.Dispatch<SetStateAction<boolean>>,
   user:any,
-  setUser:React.Dispatch<any>
+  setUser:React.Dispatch<any>,
+  cart:productType[],
+  setCart:React.Dispatch<React.SetStateAction<productType[]>>
 }
 const defaultValue:contextModel={
   token:'',
@@ -22,7 +25,10 @@ const defaultValue:contextModel={
   user:{},
   setUser:()=>{
 
-  }
+  },
+  cart:[],
+  setCart:()=>{}
+
 
 }
 type authContextProviderProps={
@@ -38,6 +44,7 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
   const [token, setToken]=useState<string>('')
   const [loading, setLoading]=useState<boolean>(true);
   const [user, setUser]=useState<any>();
+  const [cart, setCart]=useState<productType[]>([])
   const values={
     token
   }
@@ -54,6 +61,7 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
     })
     const data=await res.json();
     setUser(data);
+    setCart(data.cart)
     console.log(data);
       }
       catch(err){
@@ -90,7 +98,7 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
     getAuth();
     },[])
   return (
-    <AuthContext.Provider value={{token, setToken, loading, setLoading, user, setUser}}>
+    <AuthContext.Provider value={{token, setToken, loading, setLoading, user, setUser, cart, setCart}}>
        {children}
     </AuthContext.Provider>
   )
