@@ -4,12 +4,18 @@ import { useAuth } from './Context/AuthContext';
 import {CiCircleRemove} from 'react-icons/ci';
 import {GoDiffAdded, GoDiffRemoved} from 'react-icons/go';
 import { productType } from './Context/productType';
+
 const Cart = () => {
   const {cart, setCart}=useAuth();
+  
+ let total=0;
+ cart.map((item)=>{
+  return total=total + Number(item.price) * item.quantity
+ })
   const handleRemoveFromCart= async (id:string)=>{
     try {
       const updatedCart=cart.filter((product)=>{
-        return product._id!==id;
+        return product?._id!==id;
       })
       setCart(updatedCart)
       const response=await fetch('http://localhost:5000/user/updateCart',{
@@ -31,10 +37,14 @@ const Cart = () => {
   const handleAddQuantity=async(product:productType)=>{
     try {
         const updatedCart:any=cart.map((item:productType)=>{
-        if (item._id===product._id){
-          return {...item, quantity:item.quantity+1}
+        if (item?._id===product?._id){
+          return {...item, quantity:item?.quantity+1}
+        }
+        else{
+         return item;
         }
       })
+      console.log(updatedCart)
       setCart(updatedCart);
       const response=await fetch('http://localhost:5000/user/updateCart',{
         method:'PATCH',
@@ -50,8 +60,41 @@ const Cart = () => {
     } catch (error) {
       console.log(error);
     }
-    
-    
+  }
+
+  const handleRemoveQuantity= async (product:productType)=>{
+    try {
+      const updatedCart:any=cart.map((item:productType)=>{
+        if (item?._id===product?._id){
+          if (item?.quantity > 1){
+            return {...item, quantity:item?.quantity - 1}
+          }
+          else{
+            console.log('Item quantity cannot be 0 or lower');
+            return item;
+          }
+        }
+        else{
+          return item;
+        }
+      })
+
+      setCart(updatedCart);
+      const response=await fetch('http://localhost:5000/user/updateCart',{
+        method:'PATCH',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+          cart:updatedCart
+        }),
+        credentials:'include'
+      })
+      const data=await response.json()
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -69,27 +112,39 @@ const Cart = () => {
         </div>
         
         {cart.map((product)=>{
-          return <div key={product._id} className='cart-content-item'>
+          return <div key={product?._id} className='cart-content-item'>
               <div className='cart-content-product'>
                 
-                  <span onClick={()=> handleRemoveFromCart(product._id)} className='cart-content-remove'><CiCircleRemove/></span>                
+                  <span onClick={()=> handleRemoveFromCart(product?._id)} className='cart-content-remove'><CiCircleRemove/></span>                
 
-                <div style={{backgroundImage:`url(${product.imageUrl})`}} className='cart-product-image'></div>
-                <p className='cart-product-title'> {product.title} </p>
+                <div style={{backgroundImage:`url(${product?.imageUrl})`}} className='cart-product-image'></div>
+                <p className='cart-product-title'> {product?.title} </p>
               </div>
               <div className="cart-content-quantity">
                 <span>
                   <GoDiffAdded onClick={()=> handleAddQuantity(product)} className='cart-quantity-add'/>
                 </span>
-                <p className='cart-quantity'>{product.quantity}</p>
+                <p className='cart-quantity'>{product?.quantity}</p>
                 <span>
-                  <GoDiffRemoved  className='cart-quantity-remove'/>
+                  <GoDiffRemoved onClick={()=> handleRemoveQuantity(product)} className='cart-quantity-remove'/>
                 </span>
               </div>
-              <p className='cart-content-price'>{`${product.price} EUR`}</p>
-              <p className='cart-content-product-total'>{`${Number(product.price) * product.quantity} EUR`}</p>
+              <p className='cart-content-price'>{`${product?.price} EUR`}</p>
+              <p className='cart-content-product-total'>{`${(Math.round(Number(product?.price) * product?.quantity).toFixed(2))} EUR`}</p>
              </div>
         })}
+
+        <div className='cart-total'>
+          {cart.length > 0 ? <p className='cart-total-price'>
+            {`Total: ${(Math.round(total * 100)/ 100).toFixed(2)} EUR`}
+          </p> : <p className='cart-total-empty'>
+            Your shopping cart is currently empty!
+            </p>}
+        </div>
+
+        <div className='cart-button'>
+          <button className="checkout-button">Checkout</button>
+        </div>
 
       </div>
     </div>

@@ -18,7 +18,7 @@ const Shop:React.FC = () => {
                     <div onClick={()=> navToProduct(product._id)} style={{backgroundImage:`url(${product.imageUrl})`}} className='shop-product-image'>
                     </div>
                     <p onClick={()=> navToProduct(product._id)} className='shop-product-title'>{product.title}</p>
-                    <p className="shop-product-price">{product.price}</p>
+                    <p className="shop-product-price">{product.price} EUR</p>
                 </article>
             })}
         </div>

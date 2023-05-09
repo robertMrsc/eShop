@@ -2,6 +2,7 @@ import React, {SetStateAction } from 'react';
 import {createContext, useContext} from 'react';
 import {useState, useEffect} from 'react';
 import { productType } from './productType';
+import { addressType } from './addressType';
 
 type contextModel={
   token:string,
@@ -11,7 +12,25 @@ type contextModel={
   user:any,
   setUser:React.Dispatch<any>,
   cart:productType[],
-  setCart:React.Dispatch<React.SetStateAction<productType[]>>
+  setCart:React.Dispatch<React.SetStateAction<productType[]>>,
+  address:string,
+  setAddress:React.Dispatch<React.SetStateAction<string>>,
+  country:string,
+  setCountry:React.Dispatch<React.SetStateAction<string>>,
+  county:string,
+  setCounty:React.Dispatch<React.SetStateAction<string>>,
+  town:string,
+  setTown:React.Dispatch<React.SetStateAction<string>>,
+  postal:string,
+  setPostal:React.Dispatch<React.SetStateAction<string>>,
+  email:string,
+  setEmail:React.Dispatch<React.SetStateAction<string>>,
+  name:string,
+  setName:React.Dispatch<React.SetStateAction<string>>,
+  mobile:string,
+  setMobile:React.Dispatch<React.SetStateAction<string>>,
+  birthdate:string,
+  setBirthdate:React.Dispatch<React.SetStateAction<string>>
 }
 const defaultValue:contextModel={
   token:'',
@@ -27,8 +46,34 @@ const defaultValue:contextModel={
 
   },
   cart:[],
-  setCart:()=>{}
+  setCart:()=>{},
 
+  address:'',
+  setAddress:()=>{},
+
+  country:'',
+  setCountry:()=>{},
+
+  county:'',
+  setCounty:()=>{},
+
+  town:'',
+  setTown:()=>{},
+
+  postal:'',
+  setPostal:()=>{},
+
+  email:'',
+  setEmail:()=>{},
+
+  name:'',
+  setName:()=>{},
+
+  mobile:'',
+  setMobile:()=>{},
+
+  birthdate:'',
+  setBirthdate:()=>{},
 
 }
 type authContextProviderProps={
@@ -44,7 +89,17 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
   const [token, setToken]=useState<string>('')
   const [loading, setLoading]=useState<boolean>(true);
   const [user, setUser]=useState<any>();
-  const [cart, setCart]=useState<productType[]>([])
+  const [cart, setCart]=useState<productType[]>([]);
+  const [address, setAddress]=useState<string>(defaultValue.address);
+  const [country, setCountry]=useState<string>(defaultValue.country);
+  const [county, setCounty]=useState<string>(defaultValue.county);
+  const [town, setTown]=useState<string>(defaultValue.town);
+  const [postal, setPostal]=useState<string>(defaultValue.postal);
+  const [email, setEmail]=useState<string>('');
+  const [name, setName]=useState<string>('');
+  const [mobile, setMobile]=useState<string>('');
+  const [birthdate, setBirthdate]=useState<string>('');
+
   const values={
     token
   }
@@ -61,7 +116,16 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
     })
     const data=await res.json();
     setUser(data);
-    setCart(data.cart)
+    setCart(data.cart);
+    setAddress(data.address.address);
+    setCountry(data.address.country);
+    setCounty(data.address.county);
+    setTown(data.address.town);
+    setPostal(data.address.postal);
+    setEmail(data.email);
+    setName(data.fullname);
+    setMobile(data.mobile);
+    setBirthdate(data.birthdate)
     console.log(data);
       }
       catch(err){
@@ -98,7 +162,7 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
     getAuth();
     },[])
   return (
-    <AuthContext.Provider value={{token, setToken, loading, setLoading, user, setUser, cart, setCart}}>
+    <AuthContext.Provider value={{token, setToken, loading, setLoading, user, setUser, cart, setCart, address, setAddress, country, setCountry, county, setCounty, town, setTown, postal, setPostal, email, setEmail, name, setName, mobile, setMobile, birthdate, setBirthdate}}>
        {children}
     </AuthContext.Provider>
   )
