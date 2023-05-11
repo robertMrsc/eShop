@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Satisfy&display=swap');
+$base-font: 'Roboto';
+$logo-font: 'Satisfy';
+$base-bg-color: #f8f8ed;
+
+.checkout{
+    width: 100%;
+    font-family: $base-font;
+    .checkout-header {
+        padding-top: 2rem;
+            .checkout-header-text {
+                font-size: 1.75rem;
+                font-weight: 500;
+                text-align: center;
+            }
+        }
+    .checkout-content{
+        padding:2rem;
+        display: flex;
+        gap:2rem;
+        .checkout-form{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap:0.5rem;
+            .checkout-form-header{
+                font-size: 1.25rem;
+                font-weight: 500;
+                padding-bottom: 1rem;
+            }
+            .checkout-form-container{
+                    display: flex;
+                    flex-direction: column;
+                    gap:0.25rem;
+                    .checkout-form-input{
+                        font-size: 1.25rem;
+                        padding-block: 0.5rem;
+                        padding-left: 0.5rem;
+                    }
+                }
+        }
+        .order-summary{
+            width: 50%;
+            .order-summary-header{
+                .order-summary-header-text{
+                    font-size: 1.25rem;
+                    font-weight: 500;
+                    text-align: center;
+                    padding-bottom: 1rem;
+                }
+            }
+            .order-summary-content{
+                padding:2rem;
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(221, 221, 221);
+                height: 100%;
+                gap:1.25rem;
+                border-radius: 5px;
+                .order-summary-product{
+                    display: flex;
+                    gap:0.25rem;
+                    align-items: center;
+                    .order-product-image{
+                        aspect-ratio: 1/1;
+                        width: 75px;
+                        height: 75px;
+                        background-position: center;
+                        background-size: cover;
+                    }
+                    .order-product-info{
+                        display: flex;
+                        flex-direction: column;
+                        gap:0.5rem;
+                        padding-left: 0.5rem;
+                        .order-product-title{
+                            color:black;
+                        }
+                        .order-product-price{
+                            font-weight: 500;
+                        }
+                    }
+                    .order-product-quantity{
+                        margin-left: auto;
+                    }
+                }
+                .checkout-subtotal{
+                    margin-top: auto;
+                    display: flex;
+                    flex-direction: column;
+                    gap:0.5rem;
+                .subtotal, .shipping{
+                    display: flex;
+                    .mlauto{
+                        margin-left: auto;
+                        font-weight: 500;
+                    }
+                }
+            }
+            .checkout-button{
+                display: flex;
+                justify-content: center;
+                padding-block: 0.5rem;
+                .order-button{
+                        border: none;
+                        background: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
+                        box-shadow: 0px 2px 3px rgb(0, 0, 0);
+                        padding-block: 0.5rem;
+                        padding-inline: 2rem;
+                        border-radius: 5px;
+                        font-size: 1.25rem;
+                        transition: all 0.25s ease;
+                        cursor: pointer;
+                }
+                .order-button:hover{
+                    filter: brightness(105%);
+                }
+            }
+            }
+        }
+    }
+}
+
+@media (max-width:763px){
+    .checkout{
+        .checkout-content{
+            flex-direction: column;
+            .checkout-form, .order-summary{
+                width: 100%;
+            }
+        }
+    }
+}

@@ -4,9 +4,11 @@ import { useAuth } from './Context/AuthContext';
 import {CiCircleRemove} from 'react-icons/ci';
 import {GoDiffAdded, GoDiffRemoved} from 'react-icons/go';
 import { productType } from './Context/productType';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const {cart, setCart}=useAuth();
+  const navigate=useNavigate();
   
  let total=0;
  cart.map((item)=>{
@@ -97,6 +99,10 @@ const Cart = () => {
     }
   }
 
+  const navToCheckout=()=>{
+    navigate('/checkout')
+  }
+
   return (
     <div className='cart'>
       <p className='cart-header'>Your shopping cart</p>
@@ -130,7 +136,7 @@ const Cart = () => {
                 </span>
               </div>
               <p className='cart-content-price'>{`${product?.price} EUR`}</p>
-              <p className='cart-content-product-total'>{`${(Math.round(Number(product?.price) * product?.quantity).toFixed(2))} EUR`}</p>
+              <p className='cart-content-product-total'>{`${(Number(product.price)* product.quantity).toFixed(2)} EUR`}</p>
              </div>
         })}
 
@@ -141,10 +147,11 @@ const Cart = () => {
             Your shopping cart is currently empty!
             </p>}
         </div>
-
+        { cart.length > 0 &&
         <div className='cart-button'>
-          <button className="checkout-button">Checkout</button>
+          <button onClick={navToCheckout} className="checkout-button">Checkout</button>
         </div>
+        }
 
       </div>
     </div>

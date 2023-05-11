@@ -1,8 +1,4 @@
 import React from 'react';
-import {FaRegMoneyBillAlt} from 'react-icons/fa';
-import {ImTruck} from 'react-icons/im';
-import {GiClockwiseRotation} from 'react-icons/gi';
-import {FaHeadset} from 'react-icons/fa'
 
 const Trending:React.FC = () => {
   return (

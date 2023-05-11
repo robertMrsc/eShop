@@ -8,6 +8,8 @@ type Props={
 }
 const UserPanel:React.FC<Props> = ({display, setDisplay}) => {
 
+    const {user}=useAuth();
+
     const handleSignOut= async ()=>{
         try{
         const response= await fetch('http://localhost:5000/user/signout',{
@@ -29,6 +31,12 @@ const UserPanel:React.FC<Props> = ({display, setDisplay}) => {
     const {token, setToken}=useAuth();
     const navigate=useNavigate();
     const ref=useRef<HTMLDivElement>(null);
+
+    const navToAcc=()=>{
+        navigate('/dashboard')
+        setDisplay(false);
+    }
+
     type stylez={
         opacity:number,
         transform:string,
@@ -75,10 +83,14 @@ const UserPanel:React.FC<Props> = ({display, setDisplay}) => {
   return (
     <div ref={ref} style={panelStyles()} className='user-panel'>
         <div className='user-panel-content'>
-            <p className='user-panel-header'>Your account</p>
+            <p className='user-panel-header'> {token ? `Hello, ${user?.fullname}` : `Account`}</p>
             <div className='user-panel-buttons'>
                 { token ? <button onClick={handleSignOut} className='sign-out-button'>Sign out</button> :
                 <button onClick={handleSignIn} className='sign-in-button'>Sign in</button> }
+                {
+                    token && 
+                <button onClick={navToAcc} className='your-account-button'>Your account</button>
+                }
             </div>
         </div>
     </div>

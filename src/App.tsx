@@ -20,6 +20,8 @@ import YourAccount from './YourAccount';
 import Address from './Address';
 import { ProductProvider, useProduct } from './Context/productContext';
 import { productType } from './Context/productType';
+import DashBoardHome from './DashBoardHome';
+import Checkout from './Checkout';
 
 
 function App(){
@@ -39,12 +41,15 @@ function App(){
           <Route path='/signup' element={<Signup/>} />
           <Route path='/contact' element={<Contact/>} />
           <Route element={<PrivateRoutes/>}>
-              <Route element={<Cart/>} path='/cart' />
-          </Route>
+              <Route element={<Cart/>} path='/cart'/>
           <Route path='/dashboard' element={<YourAccount/>}>
-              <Route path='/dashboard/details' element={<AccDetails/>} />
-              <Route path='/dashboard/address' element={<Address/>} />
+                <Route path='/dashboard' element={<DashBoardHome/>} />
+                <Route path='/dashboard/details' element={<AccDetails/>} />
+                <Route path='/dashboard/address' element={<Address/>} />
           </Route>
+          <Route element={<Checkout/>} path='/checkout' />
+          </Route>
+          
         </Routes>
         <Footer/>
         </AuthProvider>

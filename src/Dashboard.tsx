@@ -10,13 +10,13 @@ const Dashboard = () => {
         navigate(link)
     }
   return (
-    
+    <>
     <div className='dashboard'>
         <div className='dashboard-content'>
             <p className='dashboard-my-account'>My account</p>
             <div className='dashboard-orders'>
                 <p className='dashboard-text ds-option'>Your orders</p>
-                <p className='dashboard-text ds-option' >Wishlist</p>
+                <p onClick={()=> navTo('/cart')} className='dashboard-text ds-option' >Cart</p>
             </div>
             <div className="dashboard-account">
                 <p className='dashboard-account-header'>Account settings</p>
@@ -34,6 +34,8 @@ const Dashboard = () => {
             </div>
         </div>
     </div>
+
+    </>
     
   )
 }

@@ -82,7 +82,39 @@ $base-bg-color: #f8f8ed;
     font-family: $base-font;
     display: flex;
     gap:2rem;
-    
+    .ds-home{
+        width: 100%;
+        .ds-home-content{
+            width: 100%;
+            padding:2rem;
+            height: 100%;
+            .ds-home-header{
+                border-bottom: 1px solid black;
+                padding-bottom: 0.5rem;
+                .ds-home-header-text{
+                    text-align: center;
+                    font-size: 1.75rem;
+                    font-weight: 500;
+                }
+            }
+            .ds-home-text{
+                margin-top:2.5rem;
+                display: flex;
+                background-color: $base-bg-color;
+                box-shadow: 0px 2px 3px rgb(0, 0, 0);
+                height: 50%;
+                border-radius: 5px;
+                font-size: 1.25rem;
+                justify-content: center;
+                align-items: center;
+                .ds-text{
+                  padding-inline: 1.5rem;  
+                  line-height: 2.5rem;
+
+                }
+            }
+        }
+    }
     .details{
         width: 100%;
         margin-inline: auto;
@@ -173,6 +205,51 @@ $base-bg-color: #f8f8ed;
                         padding-left: 0.5rem;
                         width: auto;
                         flex: 1;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:900px){
+    .account{
+        flex-direction: column;
+        .save-form-button {
+                width: auto;
+                padding-inline: 0.25rem;
+            }
+            .address{
+                .address-content{
+                    .address-form {
+                            .address-input {
+                                width: 100%;
+                                flex-direction: column;
+                                gap:1rem;
+                                .address-field{
+                                    width: 100%;
+                                }
+                            }
+                        }
+                }
+            }
+        .dashboard{
+            width: 100%;
+        }
+        .details{
+            .details-content{
+                .details-form{
+                    .save-form-button{
+                        width: auto;
+                        padding-inline: 0.25rem;
+                    }
+                    .input-container{
+                        flex-direction: column;
+                        width: 100%;
+                        gap:1rem;
+                        .input-field{
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }

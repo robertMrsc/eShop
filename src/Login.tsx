@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/login.scss';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link} from 'react-router-dom';
 
 const Login:React.FC = () => {
   const navigate=useNavigate();
@@ -60,6 +60,10 @@ const Login:React.FC = () => {
             </div>
             <button className='login-button' type='submit'>SIGN IN</button>
         </form>
+        <div className='login-footer'>
+        <p className='login-footer-text'>Don't have an account?</p>
+        <Link className='login-footer-link' to='/signup'>Click here to signup</Link>
+        </div>
     </main>
   )
 }

@@ -81,7 +81,10 @@ header{
               }
               .user-panel-buttons{
                   padding-top: 1rem;
-                 .sign-in-button, .sign-out-button{
+                  display: flex;
+                  flex-direction: column;
+                  gap:1.5rem;
+                 .sign-in-button, .sign-out-button, .your-account-button{
                   padding-inline: 1rem;
                   padding-block: 0.5rem;
                   border-radius: 5px;
@@ -96,7 +99,7 @@ header{
                   transition: all 0.25s ease;
                  }
                 }
-                .sign-in-button:hover, .sign-out-button:hover{
+                .sign-in-button:hover, .sign-out-button:hover, .your-account-button:hover{
                   filter: brightness(105%);
                 }
             }

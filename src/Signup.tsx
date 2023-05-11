@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './styles/login.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Signup = () => {
   const navigate=useNavigate();
@@ -65,6 +65,10 @@ const Signup = () => {
             </div>
             <button className='login-button' type='submit'>SIGN UP</button>
         </form>
+                <div className='login-footer'>
+        <p className='login-footer-text'>Already have an account?</p>
+        <Link className='login-footer-link' to='/login'>Click here to sign in</Link>
+        </div>
     </main>
   )
 }
