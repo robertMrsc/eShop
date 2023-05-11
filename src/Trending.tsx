@@ -16,7 +16,7 @@ const Trending:React.FC = () => {
         <p className='trending-text'>Trending products</p>
         <div className='trending-flex'>
             {trendingProducts.map((product)=>{
-              return <div onClick={()=> handleNavigate(product._id)} style={{backgroundImage:`url(${product.imageUrl})`}} className='trending-flex-image'> </div>
+              return <div key={product._id} onClick={()=> handleNavigate(product._id)} style={{backgroundImage:`url(${product.imageUrl})`}} className='trending-flex-image'> </div>
             })}
         </div>
     </div>

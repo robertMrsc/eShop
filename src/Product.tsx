@@ -43,7 +43,7 @@ const Product:React.FC<Props> = ({products}) => {
 
       <div className='product-text'>
           <p className='product-title'>{product[0]?.title}</p>
-          <p className='product-price'>{product[0]?.price}</p>
+          <p className='product-price'>{`${product[0].price} EUR`}</p>
           <p className='product-description'>{product[0]?.description}</p>
           <div className='product-button-container'> 
             <button onClick={handleAddToCart} className='product-button'>Add to cart</button>          

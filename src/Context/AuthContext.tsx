@@ -30,7 +30,9 @@ type contextModel={
   mobile:string,
   setMobile:React.Dispatch<React.SetStateAction<string>>,
   birthdate:string,
-  setBirthdate:React.Dispatch<React.SetStateAction<string>>
+  setBirthdate:React.Dispatch<React.SetStateAction<string>>,
+  orders:productType[][],
+  setOrders:React.Dispatch<React.SetStateAction<productType[][]>>
 }
 const defaultValue:contextModel={
   token:'',
@@ -75,6 +77,9 @@ const defaultValue:contextModel={
   birthdate:'',
   setBirthdate:()=>{},
 
+  orders:[],
+  setOrders:()=>{}
+
 }
 type authContextProviderProps={
     children:React.ReactNode,
@@ -99,6 +104,7 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
   const [name, setName]=useState<string>('');
   const [mobile, setMobile]=useState<string>('');
   const [birthdate, setBirthdate]=useState<string>('');
+  const [orders, setOrders]=useState<productType[][]>([])
 
   const values={
     token
@@ -125,7 +131,8 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
     setEmail(data.email);
     setName(data.fullname);
     setMobile(data.mobile);
-    setBirthdate(data.birthdate)
+    setBirthdate(data.birthdate);
+    setOrders(data.orders)
     console.log(data);
       }
       catch(err){
@@ -162,7 +169,7 @@ export const AuthProvider = ({children}:authContextProviderProps) => {
     getAuth();
     },[])
   return (
-    <AuthContext.Provider value={{token, setToken, loading, setLoading, user, setUser, cart, setCart, address, setAddress, country, setCountry, county, setCounty, town, setTown, postal, setPostal, email, setEmail, name, setName, mobile, setMobile, birthdate, setBirthdate}}>
+    <AuthContext.Provider value={{token, setToken, loading, setLoading, user, setUser, cart, setCart, address, setAddress, country, setCountry, county, setCounty, town, setTown, postal, setPostal, email, setEmail, name, setName, mobile, setMobile, birthdate, setBirthdate, orders, setOrders}}>
        {children}
     </AuthContext.Provider>
   )

@@ -22,6 +22,7 @@ import { ProductProvider, useProduct } from './Context/productContext';
 import { productType } from './Context/productType';
 import DashBoardHome from './DashBoardHome';
 import Checkout from './Checkout';
+import AuthPrivateRoutes from './AuthPrivateRoutes';
 
 
 function App(){
@@ -37,11 +38,13 @@ function App(){
           <Route path='/' element={<Homepage/>} />
           <Route path='/shop' element={<Shop/>} /> 
           <Route path='/product/:id' element={<Product products={products} />} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/signup' element={<Signup/>} />
           <Route path='/contact' element={<Contact/>} />
+          <Route element={<AuthPrivateRoutes/>}>
+            <Route path='/login' element={<Login/>} />
+            <Route path='/signup' element={<Signup/>} />
+          </Route>
           <Route element={<PrivateRoutes/>}>
-              <Route element={<Cart/>} path='/cart'/>
+                <Route element={<Cart/>} path='/cart'/>
           <Route path='/dashboard' element={<YourAccount/>}>
                 <Route path='/dashboard' element={<DashBoardHome/>} />
                 <Route path='/dashboard/details' element={<AccDetails/>} />
