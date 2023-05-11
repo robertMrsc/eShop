@@ -141,16 +141,9 @@ header{
       background-size: cover;
       background-position: center;
       border-radius: 5px;
+      cursor: pointer;
     }
-    .camera{
-      background-image: url(../images/camera.jpg);
-    }
-    .watch{
-      background-image: url(../images/watch.jpg);
-    }
-    .lens{
-      background-image: url(../images/lens.jpg);
-    }
+    
 
   }
 }
