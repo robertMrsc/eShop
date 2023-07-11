@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Satisfy&display=swap');
+$base-font: 'Roboto';
+$logo-font: 'Satisfy';
+$base-bg-color: #f8f8ed;
+
+.about{
+    width: 100%;
+    font-family: $base-font;
+    .about-header{
+        text-align: center;
+        font-size: 2rem;
+        padding-block: 2rem;
+        font-weight: 500;
+    }
+    .about-container{
+        display: flex;
+        padding-inline: 3rem;
+        padding-block: 1rem;
+        gap:1rem;
+        .about-text{
+        color: #575757;
+        line-height: 2.25rem;
+        width: 50%;
+        font-weight: 500;
+    }
+    .about-image{
+        background-image: url(../images/roses.jpg);
+        width: 50%;
+        background-size: cover;
+        background-position: center;
+    }
+    }
+
+}
+@media (max-width:1120px){
+    .about{
+        .about-container{
+            flex-direction: column;
+            .about-text{
+                width: 100%;
+            }
+            .about-image{
+                width: 100%;
+                aspect-ratio: 1/1;
+            }
+        }
+    }
+}

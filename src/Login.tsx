@@ -58,7 +58,7 @@ const Login:React.FC = () => {
             <div className='password-errors'>
               {passwordError && <p className='input-error'>{passwordError}</p>}
             </div>
-            <button className='login-button' type='submit'>SIGN IN</button>
+            <button className='login-button' type='submit'>Sign In</button>
         </form>
         <div className='login-footer'>
         <p className='login-footer-text'>Don't have an account?</p>

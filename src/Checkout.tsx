@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuth } from './Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import './styles/checkout.scss';
+import { productType } from './Context/productType';
 
 const Checkout = () => {
     let total=0;
@@ -44,9 +45,10 @@ const Checkout = () => {
     };
 
     const handleCheckout=async()=>{
+        const updatedCart:productType[]=[];
         //e.preventDefault();
         setOrders([...orders, cart ]);
-        setCart([]);
+        setCart(updatedCart);
        try{
         
         
@@ -56,14 +58,14 @@ const Checkout = () => {
                 'Content-Type':'application/json'
             },
             body:JSON.stringify({
-                cart:cart,
+                cart:[],
                 orders:orders
             }),
             credentials:'include'
-        })
+        });
         const data=await res.json();
-        console.log(data)
-        //navigate('/')
+        console.log(data);
+        navigate('/');
     }
         catch(err){
             console.log(err);

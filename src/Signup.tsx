@@ -63,7 +63,7 @@ const Signup = () => {
             <div className='password-errors'>
               {passwordError && <p className='input-error'>{passwordError}</p>}
             </div>
-            <button className='login-button' type='submit'>SIGN UP</button>
+            <button className='login-button' type='submit'>Sign Up</button>
         </form>
                 <div className='login-footer'>
         <p className='login-footer-text'>Already have an account?</p>

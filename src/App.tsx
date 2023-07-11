@@ -23,6 +23,7 @@ import { productType } from './Context/productType';
 import DashBoardHome from './DashBoardHome';
 import Checkout from './Checkout';
 import AuthPrivateRoutes from './AuthPrivateRoutes';
+import About from './About';
 
 
 function App(){
@@ -52,7 +53,7 @@ function App(){
           </Route>
           <Route element={<Checkout/>} path='/checkout' />
           </Route>
-          
+          <Route element={<About/>} path='/about' />
         </Routes>
         <Footer/>
         </AuthProvider>

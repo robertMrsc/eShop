@@ -9,15 +9,14 @@ $base-bg-color: #f8f8ed;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
     .contact-container{
-        width: 50%;
+        width: 60%;
         margin-block: 2.5rem;
         justify-content: center;
-        border:1px solid black;
-        background-color: $base-bg-color;
-        border-radius: 5px;
+        
         .contact-header{
-            padding-block: 1rem;
+            padding-bottom: 1rem;
             text-align: center;
             font-size: 1.5rem;
             font-weight: 500;
@@ -28,30 +27,64 @@ $base-bg-color: #f8f8ed;
             flex-direction: column;
             align-items: center;
             gap:1rem;
+            border-radius: 5px;
+            background-color: rgb(29, 29, 29);
+            box-shadow: -2px 2px 3px black;
+            label{
+                color: rgb(207, 207, 207);
+            }
             .contact-input, .message-input{
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                .contact-form-input{
+                .contact-form-input, .message-area{
+                    background-color: rgb(29, 29, 29);
                     padding-block: 0.5rem;
                     padding-inline:0.5rem;
                     border-radius: 5px;
+                    outline:none;
+                    border:none;
+                    border-bottom: 1px solid white;
+                    color: white;
+                    font-family: $base-font;
+                    resize: none;
                 }
                 
                 
             }
             .send-button{
+                position: relative;
                 padding-block: 0.5rem;
                 padding-inline:1.25rem;
                 border-radius: 5px;
                 outline: none;
                 cursor: pointer;
-                background-color: #8d450aa2;
-                border:none;
+                background-color:rgb(29, 29, 29);
+                border-color: white;
                 font-weight: 500;
                 color:white;
-                
+                box-shadow: -1px 1px 1px white;
+                transition: all 0.3s ease;
             }
+            .send-button:hover{
+                transform: scale(110%);
+            }
+        }
+    }
+    .map-container{
+        width: 100%;
+        padding-block: 1.5rem;
+        .contact-map{
+            width: 100%;
+            min-height: 20rem;
+        }
+    }
+}
+
+@media(max-width:648px){
+    .contact{
+        .contact-container{
+            width: 100%;
         }
     }
 }

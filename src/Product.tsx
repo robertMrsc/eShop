@@ -48,16 +48,6 @@ const Product:React.FC<Props> = ({products}) => {
           <div className='product-button-container'> 
             <button onClick={handleAddToCart} className='product-button'>Add to cart</button>          
           </div>
-          <div className='product-dropdown-container'>
-          <div className='product-dropdown'>
-            <p className='product-dropdown-text'>Ingredients</p>
-            <span className='product-open'>^</span>            
-          </div>
-          <div className='product-dropdown'>
-            <p className='product-dropdown-text'>Benefits and why to use</p>
-            <span className='product-open'>^</span>            
-          </div>
-          </div>
       </div>
       
     </main>
